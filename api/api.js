@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
+const cors = require('cors');
 const app = express();
 
 const mongoose = require('mongoose');
@@ -13,6 +13,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 const customer_routes = require('./routes/customer.routes');
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use('/', customer_routes);
